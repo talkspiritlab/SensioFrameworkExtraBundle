@@ -121,7 +121,7 @@ class SecurityListener implements EventSubscriberInterface
 
     private function getRoles(TokenInterface $token): array
     {
-        if (method_exists($this->roleHierarchy, 'getReachableRoleNames')) {
+        if (null !== $this->roleHierarchy && method_exists($this->roleHierarchy, 'getReachableRoleNames')) {
             if (null !== $this->roleHierarchy) {
                 $roles = $this->roleHierarchy->getReachableRoleNames($token->getRoleNames());
             } else {
